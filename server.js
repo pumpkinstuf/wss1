@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
 CLIENTS = [];
-const wss = new WebSocket.Server({ port: 80 });
+const wss = new WebSocket.Server({ port: 8000 });
 wss.on('connection', (ws) => {
   CLIENTS.push(ws);
   console.log(CLIENTS);
