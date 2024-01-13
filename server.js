@@ -32,7 +32,7 @@ Serve.on('connection', (ws) => {
       removeClientId(clientid);
     } else if (hasPanelAccess == true) {
       if (data == "gitid"){
-        ws.send("rightbackatya:"+clientid.toString());
+        ws.send("rightbackatya:"+clientids.toString());
       } else {
         Serve.clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
