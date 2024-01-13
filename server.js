@@ -1,3 +1,4 @@
+console.log("Starting socket process...")
 const WebSocket = require('ws');
 const { randomUUID } = require('crypto');
 
@@ -24,13 +25,12 @@ Serve.on('connection', (ws) => {
   ws.on('message', (data) => {
     Serve.clients.forEach((client) => {
         if (client.readyState === WebSocket.OPEN) {
-          client.send(data);
+          client.send("ping:"+data);
         }
     });
   });
-  ws.on('ready',function ready(){
-    client.send("regid:"+id);
-  });
+  console.log(clientid);
+  client.send("regid:"+id);
   ws.on('close',function close(){
     console.log('connection closing removing client id...');
     removeClientId(clientid);
