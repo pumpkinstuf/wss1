@@ -1,15 +1,38 @@
 const WebSocket = require('ws');
+const { randomUUID } = require('crypto');
 
-CLIENTS = [];
-const wss = new WebSocket.Server({ port: 8000 });
-wss.on('connection', (ws) => {
-  CLIENTS.push(ws);
+clientids = [];
+function makeClientId(){
+  id = randomUUID().toString();
+  if (!clientids.includes(id)){
+    clientids.push(id);
+    return id;
+  };
+};
+function removeClientId(id){
+  clientids.filter(function(value, index, arr) {
+    if (value === id) {
+        arr.splice(index, 1);
+        return true;
+    }
+    return false;
+  });
+}
+const Serve = new WebSocket.Server({ port: 8000 });
+Serve.on('connection', (ws) => {
+  var clientid = makeClientId();
   ws.on('message', (data) => {
-    //console.log(data)
-    wss.clients.forEach((client) => {
+    Serve.clients.forEach((client) => {
         if (client.readyState === WebSocket.OPEN) {
           client.send(data);
         }
     });
+  });
+  ws.on('ready',function ready(){
+    client.send("regid:"+id);
+  });
+  ws.on('close',function close(){
+    console.log('connection closing removing client id...');
+    removeClientId(clientid);
   });
 });
