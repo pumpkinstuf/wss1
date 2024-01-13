@@ -30,7 +30,7 @@ Serve.on('connection', (ws) => {
     });
   });
   console.log(clientid);
-  client.send("regid:"+id);
+  client.send("regid:"+clientid);
   ws.on('close',function close(){
     console.log('connection closing removing client id...');
     removeClientId(clientid);
