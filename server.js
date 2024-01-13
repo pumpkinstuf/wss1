@@ -36,7 +36,7 @@ Serve.on('connection', (ws) => {
       } else {
         Serve.clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
-              client.send("ping:"+data);
+              client.send(data);
             }
         });
       }
