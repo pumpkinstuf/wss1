@@ -26,7 +26,7 @@ Serve.on('connection', (ws) => {
   console.log(clientid);
   ws.send("regid:"+clientid);
   ws.on('message', (data) => {
-    // the fitnessgraam(c) pacer test is a multistage aaerobic capacity test that progressivly gets difficult over time, you may starat when you her the sound BEEP and must end once you her the sound DINGDINGDINGDITCH. if do you not maake the 20meter pacer test in time two times you must STOP. the pacer test will begin in 30 seconds.. line up at the start
+    // the fitnessgraam(c) pacer test is a multistage aaerobic capacity test that progressivly gets more difficult over time, you may start when you her the sound BEEP and must end once you her the sound DINGDINGDINGDITCH. if do you not maake the 20meter pacer test in time two times you must STOP. the pacer test will begin in 30 seconds.. line up at the start
     if (data == "ifyaawannahelpmegitmeanotherbagofemchips"){
       hasPanelAccess = true
       removeClientId(clientid);
