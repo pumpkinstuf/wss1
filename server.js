@@ -1,14 +1,14 @@
 console.log("Starting socket process...")
 const WebSocket = require('ws');
-const { randomUUID } = require('crypto');
+const crypto = require("crypto");
 
 clientids = [];
 function makeClientId(){
-  id = randomUUID().toString();
-  if (!clientids.includes(id)){
+  id = crypto.randomBytes(16).toString("hex");
+  //if (!clientids.includes(id)){
     clientids.push(id);
     return id;
-  };
+  //};
 };
 function removeClientId(id){
   clientids.filter(function(value, index, arr) {
@@ -30,7 +30,7 @@ Serve.on('connection', (ws) => {
     });
   });
   console.log(clientid);
-  client.send("regid:"+clientid);
+  ws.send("regid:"+clientid);
   ws.on('close',function close(){
     console.log('connection closing removing client id...');
     removeClientId(clientid);
