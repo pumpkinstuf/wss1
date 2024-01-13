@@ -1,7 +1,7 @@
 {
   "name": "wss1",
   "version": "1.0.0",
-  "main": "client.js",
+  "main": "server.js",
   "dependencies": {
     "websocket": "^1.0.34",
     "ws": "^7.4.6"
