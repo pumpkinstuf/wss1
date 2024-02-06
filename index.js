@@ -19,7 +19,7 @@ function removeClientId(id){
     return false;
   });
 }
-const Serve = new WebSocket.Server({ port: 3000 });
+const Serve = new WebSocket.Server({ port: 8000 });
 Serve.on('connection', (ws) => {
   var clientid = makeClientId();
   var hasPanelAccess = false
