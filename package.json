@@ -1,15 +1,15 @@
 {
   "name": "wss1",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "dependencies": {
+    "package.json": "^2.0.1",
     "websocket": "^1.0.34",
     "ws": "^7.4.6"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "sao",
